@@ -1,8 +1,6 @@
 package com.origamisoftware.teach.advanced.services;
 
-import com.origamisoftware.teach.advanced.model.Person;
 import org.junit.Test;
-
 import static org.junit.Assert.assertNotNull;
 
 /**
