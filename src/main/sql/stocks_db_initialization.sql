@@ -23,8 +23,8 @@ CREATE TABLE stocks.person_quote
   ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   person_id INT NOT NULL,
   quote_id INT NOT NULL,
-  FOREIGN KEY (person_id) REFERENCES person (ID),
-  FOREIGN KEY (quote_id) REFERENCES hobbies (ID)
+  FOREIGN KEY (person_id) REFERENCES stocks.person (ID),
+  FOREIGN KEY (quote_id) REFERENCES stocks.quotes (ID)
 );
 
 
