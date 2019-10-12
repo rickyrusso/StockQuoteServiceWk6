@@ -33,17 +33,18 @@ public class DatabaseStockService implements StockService {
 
         try {
             Connection connection = DatabaseUtils.getConnection();
-            String sql = "select * from quotes where symbol = ? ORDER BY time desc LIMIT 1";
+            String sql = "select * from stocks.quotes where symbol = ? ORDER BY time desc LIMIT 1";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, symbol);
 
             ResultSet resultSet = statement.executeQuery();
             if(resultSet.next()) {
-                String symbolValue = resultSet.getString("symbol");
+                stockQuote = new StockQuote();
+                stockQuote.setSymbol(resultSet.getString("symbol"));
                 Calendar calendarDate = new GregorianCalendar();
                 calendarDate.setTime(resultSet.getDate("time"));
-                BigDecimal price = resultSet.getBigDecimal("price");
-                stockQuote = new StockQuote(price, calendarDate, symbolValue);
+                stockQuote.setDate(calendarDate);
+                stockQuote.setPrice(resultSet.getBigDecimal("price"));
             } else {
                 throw new StockServiceException("There is no stock data for:" + symbol);
             }
@@ -87,11 +88,16 @@ public class DatabaseStockService implements StockService {
             resultSet = statement.executeQuery();
             stockQuotes = new ArrayList<StockQuote>(resultSet.getFetchSize());
             while(resultSet.next()) {
-                String symbolValue = resultSet.getString("symbol");
+                StockQuote stockQuote = new StockQuote();
+
+                stockQuote.setId(resultSet.getInt("ID"));
+                stockQuote.setSymbol(resultSet.getString("symbol"));
                 Calendar calendarDate = new GregorianCalendar();
                 calendarDate.setTime(resultSet.getDate("time"));
-                BigDecimal price = resultSet.getBigDecimal("price");
-                stockQuotes.add(new StockQuote(price, calendarDate, symbolValue));
+                stockQuote.setDate(calendarDate);
+                stockQuote.setPrice(resultSet.getBigDecimal("price"));
+
+                stockQuotes.add(stockQuote);
             }
 
         } catch (DatabaseConnectionException | SQLException exception) {

@@ -3,9 +3,8 @@ package com.origamisoftware.teach.advanced.services;
 /**
  * Used to signal a problem with the StockService.
  */
-public class StockServiceException extends Exception {
-
-    static final long serialVersionUID = 2434969556707412943L;
+public class PersonServiceException extends Exception {
+    static final long serialVersionUID = -5081902891343107911L;
 
     /**
      * Constructs a new exception with the specified detail message.  The
@@ -15,7 +14,7 @@ public class StockServiceException extends Exception {
      * @param message the detail message. The detail message is saved for
      *                later retrieval by the {@link #getMessage()} method.
      */
-    public StockServiceException(String message) {
+    public PersonServiceException(String message) {
         super(message);
     }
 
@@ -33,7 +32,7 @@ public class StockServiceException extends Exception {
      *                unknown.)
      * @since 1.4
      */
-    public StockServiceException(String message, Throwable cause) {
+    public PersonServiceException(String message, Throwable cause) {
         super(message, cause);
     }
 }
