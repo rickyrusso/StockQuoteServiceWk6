@@ -1,6 +1,9 @@
 /** create the stocks database */
 
+DROP TABLE IF EXISTS stocks.person_quote CASCADE;
 DROP TABLE IF EXISTS stocks.quotes CASCADE;
+DROP TABLE IF EXISTS stocks.person CASCADE;
+
 CREATE TABLE stocks.quotes(
    ID INT NOT NULL AUTO_INCREMENT,
    symbol VARCHAR(4) NOT NULL,
@@ -9,7 +12,6 @@ CREATE TABLE stocks.quotes(
    PRIMARY KEY ( id )
 );
 
-DROP TABLE IF EXISTS stocks.person CASCADE;
 CREATE TABLE stocks.person(
     ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(256) NOT NULL,
@@ -17,7 +19,7 @@ CREATE TABLE stocks.person(
     birth_date DATETIME NOT NULL
 );
 
-DROP TABLE IF EXISTS stocks.person_quote CASCADE;
+
 CREATE TABLE stocks.person_quote
 (
   ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
