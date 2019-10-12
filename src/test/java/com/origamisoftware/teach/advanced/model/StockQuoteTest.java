@@ -24,7 +24,7 @@ public class StockQuoteTest {
         price = new BigDecimal(100);
         date = Calendar.getInstance();
         symbol = "APPL";
-        stockQuote = new StockQuote(price, date, symbol);
+        //stockQuote = new StockQuote(price, date, symbol);
     }
 
     @Test

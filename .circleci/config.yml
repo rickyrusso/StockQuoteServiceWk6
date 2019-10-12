@@ -14,6 +14,14 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
+      - image: circleci/mysql:8.0.15
+        command: [--default-authentication-plugin=mysql_native_password]
+        environment:
+          - MYSQL_ROOT_PASSWORD: Password1!
+          - MYSQL_DATABASE: stocks
+          - MYSQL_USER: monty
+          - MYSQL_PASSWORD: Password1!
+
     working_directory: ~/repo
 
     environment:
@@ -22,6 +30,15 @@ jobs:
 
     steps:
       - checkout
+      # - run: sudo apt install mysql-client
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
       # Download and cache dependencies
       - restore_cache:

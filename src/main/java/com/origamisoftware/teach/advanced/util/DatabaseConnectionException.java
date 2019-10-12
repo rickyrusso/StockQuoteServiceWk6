@@ -5,6 +5,8 @@ package com.origamisoftware.teach.advanced.util;
  */
 public class DatabaseConnectionException extends Exception {
 
+    static final long serialVersionUID = 678090485152846183L;
+
     /**
      * Constructs a new exception with the specified detail message and
      * cause.  <p>Note that the detail message associated with

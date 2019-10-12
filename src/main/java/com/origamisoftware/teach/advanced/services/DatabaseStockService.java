@@ -43,7 +43,7 @@ public class DatabaseStockService implements StockService {
                 Calendar calendarDate = new GregorianCalendar();
                 calendarDate.setTime(resultSet.getDate("time"));
                 BigDecimal price = resultSet.getBigDecimal("price");
-                stockQuote = new StockQuote(price, calendarDate, symbolValue);
+                //stockQuote = new StockQuote(price, calendarDate, symbolValue);
             } else {
                 throw new StockServiceException("There is no stock data for:" + symbol);
             }
@@ -91,7 +91,7 @@ public class DatabaseStockService implements StockService {
                 Calendar calendarDate = new GregorianCalendar();
                 calendarDate.setTime(resultSet.getDate("time"));
                 BigDecimal price = resultSet.getBigDecimal("price");
-                stockQuotes.add(new StockQuote(price, calendarDate, symbolValue));
+                //stockQuotes.add(new StockQuote(price, calendarDate, symbolValue));
             }
 
         } catch (DatabaseConnectionException | SQLException exception) {

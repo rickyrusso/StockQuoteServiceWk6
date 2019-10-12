@@ -47,10 +47,10 @@ public class BasicStockQuoteApplicationTest {
         StockQuery stockQuery = new StockQuery(symbol, from, until);
 
         List<StockQuote> stockQuotes = new ArrayList<>();
-        StockQuote stockQuoteFromDate = new StockQuote(new BigDecimal(100), stockQuery.getFrom(), stockQuery.getSymbol());
-        stockQuotes.add(stockQuoteFromDate);
-        StockQuote stockQuoteUntilDate = new StockQuote(new BigDecimal(100), stockQuery.getUntil(), stockQuery.getSymbol());
-        stockQuotes.add(stockQuoteUntilDate);
+        //StockQuote stockQuoteFromDate = new StockQuote(new BigDecimal(100), stockQuery.getFrom(), stockQuery.getSymbol());
+        //stockQuotes.add(stockQuoteFromDate);
+        //StockQuote stockQuoteUntilDate = new StockQuote(new BigDecimal(100), stockQuery.getUntil(), stockQuery.getSymbol());
+        //stockQuotes.add(stockQuoteUntilDate);
 
         when(stockServiceMock.getQuote(any(String.class), any(Calendar.class), any(Calendar.class))).thenReturn(stockQuotes);
 
