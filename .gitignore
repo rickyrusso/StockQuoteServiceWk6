@@ -25,3 +25,4 @@ hs_err_pid*
 /target/test-classes/META-INF/java_class.kotlin_module
 /target/classes/META-INF/java_class.kotlin_module
 /java_class.iml
+/target/
